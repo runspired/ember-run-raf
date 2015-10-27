@@ -1,16 +1,13 @@
 import globalScope from '../utils/global-scope';
 import isFastboot from '../utils/is-fastboot';
 
-/* global self */
 /**!
  * Modifies `window.setTimeout` to use  `requestAnimationFrame`
  */
-const GlobalScope = globalScope();
-const addToFrame = GlobalScope.requestAnimationFrame;
-const nativeSetTimeout = GlobalScope.setTimeout;
+let GlobalScope = globalScope();
 
-export addToFrame;
-export nativeSetTimeout
+var addToFrame = GlobalScope.requestAnimationFrame;
+var nativeSetTimeout = GlobalScope.setTimeout;
 
 function frameTimeout(method, wait) {
   if (!wait) {
@@ -19,8 +16,17 @@ function frameTimeout(method, wait) {
   return nativeSetTimeout(method, wait);
 }
 
-if (!isFastboot()) {
-  GlobalScope.setTimeout = frameTimeout;
+function installOverride() {
+  if (!isFastboot()) {
+    GlobalScope.setTimeout = frameTimeout;
+  }
 }
 
-export default frameTimeout;
+export {
+  addToFrame,
+  nativeSetTimeout,
+  frameTimeout,
+  installOverride
+};
+
+export default installOverride;

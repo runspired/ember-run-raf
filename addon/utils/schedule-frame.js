@@ -1,4 +1,4 @@
-import globalScope form './global-scope';
+import globalScope from './global-scope';
 
 const Global = globalScope();
 
