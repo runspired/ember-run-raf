@@ -1,25 +1,12 @@
 # Ember-run-raf
 
-This README outlines the details of collaborating on this Ember addon.
+Ember-run-raf is a `requestAnimationFrame` polyfill and a suite of `raf` tools to complement,
+good all the way back to IE9 (potentially IE8).
 
-## Installation
+This addon overwrites `setTimeout` to utilize `raf` whenever the given `wait` is `null` or `0`,
+this has the effect of making `backburner` utilize `raf` to flush queues, which is advantageous when
+your app performs a lot of animation, scrolling, or complex DOM insertions.
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+This project grew out of [smoke-and-mirrors](https://github.com/runspired/smoke-and-mirrors), where
+these tools were used to reduce scroll jank and ensure that DOM and scroll position manipulation would
+occur during the same animation frame.
