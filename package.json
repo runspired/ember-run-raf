@@ -1,6 +1,6 @@
 {
   "name": "ember-run-raf",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Use requestAnimationFrame with Backburner.",
   "directories": {
     "doc": "doc",
