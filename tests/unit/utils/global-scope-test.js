@@ -1,4 +1,4 @@
-import globalScope from '../../../utils/global-scope';
+import globalScope from 'ember-run-raf/utils/global-scope';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | global scope');

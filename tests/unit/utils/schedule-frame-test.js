@@ -1,10 +1,10 @@
-import nextFrame from '../../../utils/schedule-frame';
+import nextFrame from 'ember-run-raf/utils/schedule-frame';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | next frame');
+module('Unit | Utility | schedule frame');
+
 
 // Replace this with your real tests.
-test('it works', function(assert) {
-  var result = nextFrame();
-  assert.ok(result);
+test('it exists', function(assert) {
+  assert.ok(nextFrame);
 });
