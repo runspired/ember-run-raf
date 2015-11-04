@@ -1,6 +1,4 @@
-import globalScope from './global-scope';
-
-const Global = globalScope();
+import raf from './raf';
 
 /**!
  * schedule a task to be run during the next animation frame.  This is similar to calling
@@ -24,5 +22,5 @@ export default function scheduleIntoAnimationFrame(context, method) {
     return method.apply(this, orgRestArgs);
   }.bind(context, method, restArgs);
 
-  return Global.requestAnimationFrame(frameCallback);
+  return raf(frameCallback);
 }

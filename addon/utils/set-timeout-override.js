@@ -1,30 +1,27 @@
-import globalScope from '../utils/global-scope';
-import isFastboot from '../utils/is-fastboot';
+import globalScope from './global-scope';
+import isFastboot from './is-fastboot';
+import addToFrame from './raf';
+import nativeSetTimeout from './set-timeout';
+import Ember from 'ember';
 
 /**!
  * Modifies `window.setTimeout` to use  `requestAnimationFrame`
  */
-let GlobalScope = globalScope();
-
-var addToFrame = GlobalScope.requestAnimationFrame;
-var nativeSetTimeout = GlobalScope.setTimeout;
 
 function frameTimeout(method, wait) {
   if (!wait) {
-    return addToFrame(method);
+    return addToFrame.call(null, method);
   }
-  return nativeSetTimeout(method, wait);
+  return nativeSetTimeout.call(null, method, wait);
 }
 
 function installOverride() {
-  if (!isFastboot()) {
-    GlobalScope.setTimeout = frameTimeout;
+  if (!isFastboot() && !Ember.Test.testing) {
+    globalScope.setTimeout = frameTimeout;
   }
 }
 
 export {
-  addToFrame,
-  nativeSetTimeout,
   frameTimeout,
   installOverride
 };
