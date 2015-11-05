@@ -16,7 +16,7 @@ function frameTimeout(method, wait) {
 }
 
 function installOverride() {
-  if (!isFastboot() && !Ember.Test.testing) {
+  if (!isFastboot()) {
     globalScope.setTimeout = frameTimeout;
   }
 }
