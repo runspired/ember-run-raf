@@ -22,5 +22,5 @@ export default function scheduleIntoAnimationFrame(context, method) {
     return method.apply(this, orgRestArgs);
   }.bind(context, method, restArgs);
 
-  return raf(frameCallback);
+  return raf.addToFrame(frameCallback);
 }
