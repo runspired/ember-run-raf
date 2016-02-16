@@ -1,6 +1,6 @@
 import globalScope from './global-scope';
 import nativeSetTimeout from './set-timeout';
-import nativeCancelTimeout from './cancel-timeout';
+import nativeClearTimeout from './clear-timeout';
 
 let addToFrame = globalScope.requestAnimationFrame;
 if (!addToFrame) {
@@ -11,17 +11,17 @@ if (!addToFrame) {
   };
 }
 
-let cancelFrame = globalScope.cancelAnimationFrame;
-if (!cancelFrame) {
-  cancelFrame = function cancelFrame(id) {
-    return nativeCancelTimeout(id);
+let clearFrame = globalScope.cancelAnimationFrame;
+if (!clearFrame) {
+  clearFrame = function clearFrame(id) {
+    return nativeClearTimeout(id);
   };
 }
 
 addToFrame = addToFrame.bind(globalScope);
-cancelFrame = cancelFrame.bind(globalScope);
+clearFrame = clearFrame.bind(globalScope);
 
 export default {
   addToFrame,
-  cancelFrame
+  clearFrame
 };

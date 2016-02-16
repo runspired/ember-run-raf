@@ -2,7 +2,7 @@ import globalScope from './global-scope';
 import isFastboot from './is-fastboot';
 import raf from './raf';
 import nativeSetTimeout from './set-timeout';
-import nativeCancelTimeout from './cancel-timeout';
+import nativeClearTimeout from './clear-timeout';
 import Ember from 'ember';
 
 const {
@@ -20,9 +20,9 @@ function frameTimeout(method, wait) {
   return nativeSetTimeout.call(null, method, wait);
 }
 
-function cancelTimeout(id) {
-  raf.cancelFrame(id);
-  nativeCancelTimeout(id);
+function clearTimeout(id) {
+  raf.clearFrame(id);
+  nativeClearTimeout(id);
 }
 
 function installOverride() {
@@ -30,18 +30,18 @@ function installOverride() {
     if (run.backburner._platform) {
       run.backburner._platform = {
         setTimeout: raf.addToFrame,
-        clearTimeout: raf.cancelFrame
+        clearTimeout: raf.clearFrame
       };
     } else {
       globalScope.setTimeout = frameTimeout;
-      globalScope.clearTimeout = cancelTimeout;
+      globalScope.clearTimeout = clearTimeout;
     }
   }
 }
 
 export {
   frameTimeout,
-  cancelTimeout,
+  clearTimeout,
   installOverride
 };
 
