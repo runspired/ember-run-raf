@@ -29,8 +29,8 @@ function installOverride() {
   if (!isFastboot()) {
     if (run.backburner._platform) {
       run.backburner._platform = {
-        setTimeout: raf.addToFrame,
-        clearTimeout: raf.clearFrame
+        setTimeout: frameTimeout,
+        clearTimeout: clearTimeout
       };
     } else {
       globalScope.setTimeout = frameTimeout;
