@@ -16,7 +16,7 @@
     "url": "https://github.com/runspired/ember-run-raf"
   },
   "engines": {
-    "node": "~4.1.1"
+    "node": ">= 0.12"
   },
   "homepage": "https://github.com/runspired/ember-run-raf",
   "bugs": "https://github.com/runspired/ember-run-raf/issues",
