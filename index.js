@@ -9,7 +9,8 @@ module.exports = {
       this.import('bower_components/animation-frame/AnimationFrame.min.js');
     } else {
       app.import(app.bowerDirectory + '/animation-frame/AnimationFrame.min.js');
-  },
+    } 
+ },
 
   isDevelopingAddon: function() {
     return false;
