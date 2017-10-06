@@ -28,10 +28,8 @@ function clearTimeout(id) {
 function installOverride() {
   if (!isFastboot()) {
     if (run.backburner._platform) {
-      run.backburner._platform = {
-        setTimeout: frameTimeout,
-        clearTimeout: clearTimeout
-      };
+      run.backburner._platform.setTimeout = frameTimeout;
+      run.backburner._platform.clearTimeout = clearTimeout;
     } else {
       globalScope.setTimeout = frameTimeout;
       globalScope.clearTimeout = clearTimeout;
