@@ -1,23 +1,24 @@
-import Ember from 'ember';
+import Application from '@ember/application';
+import { run } from '@ember/runloop';
 import { initialize } from '../../../initializers/raf-polyfill';
 import { module, test } from 'qunit';
 
 var registry, application;
 
-module('Unit | Initializer | raf polyfill', {
-  beforeEach: function() {
-    Ember.run(function() {
-      application = Ember.Application.create();
+module('Unit | Initializer | raf polyfill', function(hooks) {
+  hooks.beforeEach(function() {
+    run(function() {
+      application = Application.create();
       registry = application.registry;
       application.deferReadiness();
     });
-  }
-});
+  });
 
-// Replace this with your real tests.
-test('it works', function(assert) {
-  initialize(registry, application);
+  // Replace this with your real tests.
+  test('it works', function(assert) {
+    initialize(registry, application);
 
-  // you would normally confirm the results of the initializer here
-  assert.ok(true);
+    // you would normally confirm the results of the initializer here
+    assert.ok(true);
+  });
 });

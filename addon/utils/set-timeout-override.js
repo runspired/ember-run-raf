@@ -1,13 +1,9 @@
+import { run } from '@ember/runloop';
 import globalScope from './global-scope';
 import isFastboot from './is-fastboot';
 import raf from './raf';
 import nativeSetTimeout from './set-timeout';
 import nativeClearTimeout from './clear-timeout';
-import Ember from 'ember';
-
-const {
-  run
-  } = Ember;
 
 /**!
  * Modifies `window.setTimeout` to use  `requestAnimationFrame`
