@@ -4,8 +4,7 @@
 [![Build Status](https://travis-ci.org/runspired/ember-run-raf.svg)](https://travis-ci.org/runspired/ember-run-raf)
 [![Ember Observer Score](http://emberobserver.com/badges/ember-run-raf.svg)](http://emberobserver.com/addons/ember-run-raf)
 
-Ember-run-raf is a `requestAnimationFrame` polyfill and a suite of `raf` tools to complement,
-good all the way back to IE9 (potentially IE8).
+Ember-run-raf uses `raf` for the Ember Run Loop as well as a suite of tools to complement.
 
 This addon overwrites `setTimeout` to utilize `raf` whenever the given `wait` is `null` or `0`,
 this has the effect of making `backburner` utilize `raf` to flush queues, which is advantageous when
@@ -45,9 +44,3 @@ your method executes exactly when it next should, in the order it should.
 This addon is mostly to start a conversation and to provide the ability to test out the idea and
 use it in ember applications today.  Ideally, a tighter more direct integration with backburner
 will be possible soon, without overriding `setTimeout` globally.
-
-## The Polyfill
-
-The specific polyfill in use here could probably be improved, I'm leaning towards creating
-a new polyfill of my own after browsing the available options on `npm`, but recommendations
-are welcome.
