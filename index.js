@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-run-raf',
+  name: require('./package').name,
 
   isDevelopingAddon: function() {
     return false;
